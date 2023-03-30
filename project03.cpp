@@ -301,45 +301,50 @@ while (running) {
 
     // Use a switch statement to perform the appropriate action based on the user's choice.
     switch (choice) {
+            
         case 1: {
             // If the user chooses to add a vehicle, call the addVehicle() function to create a new Vehicle object and add it to the garage.
             Vehicle* vehicle = addVehicle();
             garage.push_back(vehicle);
             break;
-        }
+         }
+            
         case 2:
             // If the user chooses to print the garage, loop through each vehicle in the garage and call its getCarInformation() function to display its information.
             for (Vehicle* vehicle : garage) {
                 vehicle->getCarInformation();
-            }
-            break;
+         }
+         break;
+            
+            
         case 3: {
-    int index;
-    cout << "Enter the index of the vehicle you want to update: ";
-    cin >> index;
-    if (index >= 0 && index < garage.size()) {
-        Vehicle* vehicle = garage[index];
-        string make;
-        string model;
-        int year;
-        int odometer;
-        while (true) {
-            cout << "Enter make: ";
-            getline(cin >> ws, make);
-            if (!make.empty()) break;
-        }
-        while (true) {
-            cout << "Enter model: ";
-            getline(cin >> ws, model);
-            if (!model.empty()) break;
-        }
-        while (true) {
-            cout << "Enter year: ";
-            if (cin >> year && year >= 1900 && year <= 2023) break;
-            cout << "Invalid input, please try again.\n";
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        }
+            int index;
+            cout << "Enter the index of the vehicle you want to update: ";
+            cin >> index;
+            if (index >= 0 && index < garage.size()) {
+            Vehicle* vehicle = garage[index];
+            string make;
+            string model;
+            int year;
+            int odometer;
+            while (true) {
+                 cout << "Enter make: ";
+                 getline(cin >> ws, make);
+                 if (!make.empty()) break;
+             }
+                
+           while (true) {
+              cout << "Enter model: ";
+              getline(cin >> ws, model);
+              if (!model.empty()) break;
+          }
+          while (true) {
+              cout << "Enter year: ";
+              if (cin >> year && year >= 1900 && year <= 2023) break;
+              cout << "Invalid input, please try again.\n";
+              cin.clear();
+              cin.ignore(numeric_limits<streamsize>::max(), '\n');
+         }
         while (true) {
             cout << "Enter odometer reading: ";
             if (cin >> odometer && odometer >= 0) break;
@@ -450,17 +455,17 @@ case 7: {
 }
 
 // This case handles the user choosing to exit the program.
-case 0:
-// Print a message indicating the program is exiting.
-cout<<"Exiting.... good bye...";
-running = false; // sets the variable 'running' to false, which will exit the while loop
-break; // breaks out of the switch statement
-default: // this code block executes if the user enters a choice that doesn't match any of the cases above
-cout << "Invalid choice.\n"; // prints an error message
-break; // breaks out of the switch statement
-}
+  case 0:
+      // Print a message indicating the program is exiting.
+      cout<<"Exiting.... good bye...";
+      running = false; // sets the variable 'running' to false, which will exit the while loop
+      break; // breaks out of the switch statement
+      default: // this code block executes if the user enters a choice that doesn't match any of the cases above
+      cout << "Invalid choice.\n"; // prints an error message
+      break; // breaks out of the switch statement
+   }
 
-}
+ }
 
 for (Vehicle* vehicle : garage) { // iterates through the 'garage' vector using a range-based for loop and assigns each element to 'vehicle'
     delete vehicle; // deletes each element of 'garage', which must have been dynamically allocated
